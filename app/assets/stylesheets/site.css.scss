@@ -13,10 +13,20 @@
   height: 40px;
   background: white;
   border: 2px solid black;
+
+  .coin{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
 }
 .red{
-  background-color: red;
+  .coin{
+    background-color: red;
+  }
 }
 .black{
-  background-color: black;
+  .coin{
+    background-color: black;
+  }
 }

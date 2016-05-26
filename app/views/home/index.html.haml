@@ -1,12 +1,18 @@
 .wrapper
   %h1 Connect Four Game
+  %h4.info
   .board-wrapper
     - ['a', 'b', 'c', 'd', 'e', 'f'].each do |row|
       .row{ id: row }
         - 7.times do |count|
           .chip-holder{:id => count + 1}
+            .coin
+  .controls
+    %button.reset Reset
+  %p Crafted by Chabz
 
 :javascript
   $(function(){
     BoardGame.init();
+    BoardGame.initResetEvent($('button.reset'));
   });
