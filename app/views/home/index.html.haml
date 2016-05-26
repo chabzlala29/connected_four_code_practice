@@ -1,0 +1,12 @@
+.wrapper
+  %h1 Connect Four Game
+  .board-wrapper
+    - ['a', 'b', 'c', 'd', 'e', 'f'].each do |row|
+      .row{ id: row }
+        - 7.times do |count|
+          .chip-holder{:id => count + 1}
+
+:javascript
+  $(function(){
+    BoardGame.init();
+  });

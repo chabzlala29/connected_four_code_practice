@@ -1,0 +1,22 @@
+.wrapper{
+  width: 980px;
+  margin: 0 auto;
+  text-align: center;
+
+  .board-wrapper{
+    text-align: center
+  }
+}
+.chip-holder{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 2px solid black;
+}
+.red{
+  background-color: red;
+}
+.black{
+  background-color: black;
+}
