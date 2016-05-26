@@ -78,7 +78,8 @@ jQuery.extend @BoardGame,
           current_id += 1
         else
           current_id -= 1
-        arr.push $row.find(".chip-holder##{current_id}").hasClass("filled #{currentColor}")
+        element = $row.find(".chip-holder##{current_id}")
+        arr.push element.hasClass("filled #{currentColor}") 
       BoardGame.alertWinner(currentColor, arr)
     # right
     loopArr(true)
@@ -100,7 +101,8 @@ jQuery.extend @BoardGame,
         else
           current_row -= 1
         try
-          arr.push $(".row##{String.fromCharCode(current_row)}").find(".chip-holder##{vars.id}").hasClass("filled #{currentColor}")
+          element = $(".row##{String.fromCharCode(current_row)}").find(".chip-holder##{vars.id}")
+          arr.push element.hasClass("filled #{currentColor}")
         catch e then true
 
       BoardGame.alertWinner(currentColor, arr)
@@ -133,7 +135,8 @@ jQuery.extend @BoardGame,
           current_id -= 1
 
         try
-          arr.push $(".row##{String.fromCharCode(current_row)}").find(".chip-holder##{current_id}").hasClass("filled #{currentColor}")
+          element = $(".row##{String.fromCharCode(current_row)}").find(".chip-holder##{current_id}")
+          arr.push element.hasClass("filled #{currentColor}")
         catch e then true
 
       BoardGame.alertWinner(currentColor, arr)
@@ -152,11 +155,12 @@ jQuery.extend @BoardGame,
 
   alertWinner: (color, arr) ->
     if((arr.filter (r) -> r == true).length == 3)
-      $('.info').html "<span style='color: #{color}'>Winner is #{color.toUpperCase()}!</span>"
-      BoardGame.reset()
+      $('.info').html "<span style='color: #{color}'>Winner is #{color.toUpperCase()}!</span><br><span>Please click the reset button to restart the game.</span>"
+      $('.chip-holder').addClass('filled')
 
   reset: ->
     $('.filled').removeClass('filled red black')
+    BoardGame.setColorInfo('black')
     BoardGame.counter = 0
 
   getCurrentColor: ($element) ->
